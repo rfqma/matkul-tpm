@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.calendar_month),
+                      Icon(Icons.timer),
                       Text(
                         "Stopwatch",
                         style: GoogleFonts.getFont(
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.construction_rounded),
+                      Icon(Icons.web),
                       Text(
                         "Situs Rekomendasi",
                         style: GoogleFonts.getFont(
@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.construction_rounded),
+                      Icon(Icons.wallet_membership),
                       Text(
                         "Favorit",
                         style: GoogleFonts.getFont(
