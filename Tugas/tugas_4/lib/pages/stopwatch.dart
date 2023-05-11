@@ -1,60 +1,46 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'dart:async';
-import 'package:flutter/material.dart';
-import '../components/button_widget.dart';
-
-class Stopwatch extends StatefulWidget {
-  const Stopwatch({super.key});
-
+class MyStopwatch extends StatefulWidget {
   @override
-  State<Stopwatch> createState() => _StopwatchState();
+  _MyStopwatchState createState() => _MyStopwatchState();
 }
 
-class _StopwatchState extends State<Stopwatch> {
-  static const countdownDuration = Duration(minutes: 30);
-  Duration duration = Duration();
-  Timer? timer;
+class _MyStopwatchState extends State<MyStopwatch> {
+  final dur = const Duration(seconds: 1);
+  var time = "00:00:00";
+  var swatch = Stopwatch();
 
-  bool countDown = true;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    reset();
+  void starttimer() {
+    Timer(dur, keeprunning);
   }
 
-  void reset() {
-    if (countDown) {
-      setState(() => duration = countdownDuration);
-    } else {
-      setState(() => duration = Duration());
+  void keeprunning() {
+    if (swatch.isRunning) {
+      starttimer();
     }
-  }
-
-  void startTimer() {
-    timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
-  }
-
-  void addTime() {
-    final addSeconds = countDown ? -1 : 1;
     setState(() {
-      final seconds = duration.inSeconds + addSeconds;
-      if (seconds < 0) {
-        timer?.cancel();
-      } else {
-        duration = Duration(seconds: seconds);
-      }
+      time = swatch.elapsed.inHours.toString().padLeft(2, "0") +
+          ":" +
+          (swatch.elapsed.inMinutes % 60).toString().padLeft(2, "0") +
+          ":" +
+          (swatch.elapsed.inSeconds % 60).toString().padLeft(2, "0");
     });
   }
 
-  void stopTimer({bool resets = true}) {
-    if (resets) {
-      reset();
-    }
-    setState(() => timer?.cancel());
+  void startwatch() {
+    swatch.start();
+    starttimer();
+  }
+
+  void stopwatch() {
+    swatch.stop();
+  }
+
+  void resetwatch() {
+    swatch.reset();
+    time = "00:00:00";
   }
 
   @override
@@ -73,88 +59,41 @@ class _StopwatchState extends State<Stopwatch> {
         ),
         backgroundColor: Colors.black,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            buildTime(),
-            SizedBox(
-              height: 80,
-            ),
-            buildButtons()
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildTime() {
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final hours = twoDigits(duration.inHours);
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      buildTimeCard(time: hours, header: 'HOURS'),
-      SizedBox(
-        width: 8,
-      ),
-      buildTimeCard(time: minutes, header: 'MINUTES'),
-      SizedBox(
-        width: 8,
-      ),
-      buildTimeCard(time: seconds, header: 'SECONDS'),
-    ]);
-  }
-
-  Widget buildTimeCard({required String time, required String header}) =>
-      Column(
+      body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            child: Text(
-              time,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 50),
-            ),
+        children: <Widget>[
+          new Text(
+            time,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 70),
           ),
-          SizedBox(
-            height: 24,
-          ),
-          Text(header, style: TextStyle(color: Colors.black45)),
-        ],
-      );
-
-  Widget buildButtons() {
-    final isRunning = timer == null ? false : timer!.isActive;
-    final isCompleted = duration.inSeconds == 0;
-    return isRunning || isCompleted
-        ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonWidget(
-                  text: 'STOP',
-                  onClicked: () {
-                    if (isRunning) {
-                      stopTimer(resets: false);
-                    }
-                  }),
-              SizedBox(
-                width: 12,
+          new Padding(padding: const EdgeInsets.all(40)),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              new FloatingActionButton(
+                child: Icon(Icons.play_arrow, color: Colors.white, size: 40),
+                backgroundColor: Colors.green,
+                onPressed: startwatch,
               ),
-              ButtonWidget(text: "RESET", onClicked: stopTimer),
+              new FloatingActionButton(
+                child: Icon(Icons.stop, color: Colors.white, size: 40),
+                backgroundColor: Colors.yellow,
+                onPressed: stopwatch,
+              ),
+              new FloatingActionButton(
+                child: Icon(
+                  Icons.refresh,
+                  color: Colors.white,
+                  size: 40,
+                ),
+                backgroundColor: Colors.red,
+                onPressed: resetwatch,
+              )
             ],
           )
-        : ButtonWidget(
-            text: "START",
-            color: Colors.black,
-            backgroundColor: Colors.white,
-            onClicked: () {
-              startTimer();
-            });
+        ],
+      ),
+    );
   }
 }
