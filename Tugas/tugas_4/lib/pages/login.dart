@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
-                        labelText: "Username (NIM)",
+                        labelText: "Username",
                         labelStyle: GoogleFonts.getFont(
                           'Montserrat',
                           textStyle: TextStyle(
@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: hidePassword,
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
-                          labelText: "Password (nama)",
+                          labelText: "Password",
                           labelStyle: GoogleFonts.getFont(
                             'Montserrat',
                             textStyle: TextStyle(

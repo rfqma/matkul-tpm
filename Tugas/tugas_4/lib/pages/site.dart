@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tugas_4/models/items_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
+import 'package:tugas_4/provider/favorite_provider.dart';
+import 'package:tugas_4/pages/favorite.dart';
 
 class Site extends StatefulWidget {
   const Site({super.key});
@@ -10,8 +14,37 @@ class Site extends StatefulWidget {
 }
 
 class _SiteState extends State<Site> {
+  List itemsList = [
+    {
+      "title": "Reddit",
+      "url": "https://reddit.com/",
+      "image": "assets/images/reddit.png",
+      "status": "false",
+    },
+    {
+      "title": "Netflix",
+      "url": "https://netflix.com",
+      "image": "assets/images/netflix.jpeg",
+      "status": "false",
+    },
+    {
+      "title": "DeviantArt",
+      "url": "https://deviantart.com/",
+      "image": "assets/images/deviantart.jpg",
+      "status": "false",
+    },
+    {
+      "title": "Pexels",
+      "url": "https://pexels.com/",
+      "image": "assets/images/pexels.jpeg",
+      "status": "false",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
+    var favoriteBloc = Provider.of<FavoriteBloc>(context); //pass provider
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -25,314 +58,96 @@ class _SiteState extends State<Site> {
           ),
         ),
         backgroundColor: Colors.black,
+        actions: [
+          Row(
+            children: [
+              Text(
+                favoriteBloc.count.toString(),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.star,
+              color: Colors.yellow,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Favorite(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Card(
-              margin: EdgeInsets.all(20),
-              color: Colors.black,
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: InkWell(
+          children: <Widget>[
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: itemsList.length,
+              itemBuilder: (context, index) {
+                return ListTile(
                   onTap: () async {
-                    final Uri url = Uri.parse('https://netflix.com');
-                    if (!await launchUrl(url)) {
-                      throw Exception('Could not launch $url');
+                    final Uri urlDestination =
+                        Uri.parse(itemsList[index]['url']);
+                    if (!await launchUrl(urlDestination)) {
+                      throw Exception('Could not launch $urlDestination');
                     }
                   },
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.white,
-                              child: Padding(
-                                padding: EdgeInsets.all(2),
-                                child: ClipOval(
-                                  child: Image.network(
-                                      "https://cdn.vox-cdn.com/thumbor/sW5h16et1R3au8ZLVjkcAbcXNi8=/0x0:3151x2048/2000x1333/filters:focal(1575x1024:1576x1025)/cdn.vox-cdn.com/uploads/chorus_asset/file/15844974/netflixlogo.0.0.1466448626.png"),
-                                  // "assets/images/netflix.png"
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Netflix",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "netflix.com/",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                            ),
-                            Icon(
-                              Icons.bookmark_add,
-                              size: 30,
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
+                  title: Text(itemsList[index]['title']),
+                  subtitle: Text(itemsList[index]['url']),
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(itemsList[index]['image']),
                   ),
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.all(20),
-              color: Colors.black,
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: InkWell(
-                  onTap: () async {
-                    final Uri url = Uri.parse('https://reddit.com');
-                    if (!await launchUrl(url)) {
-                      throw Exception('Could not launch $url');
-                    }
-                  },
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.white,
-                              child: Padding(
-                                padding: EdgeInsets.all(2),
-                                child: ClipOval(
-                                  child: Image.network(
-                                      // "assets/images/reddit.png",
-                                      "https://www.redditinc.com/assets/images/site/reddit-logo.png"),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Reddit",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "reddit.com/",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                            ),
-                            Icon(
-                              Icons.bookmark_add,
-                              size: 30,
-                              color: Colors.white,
-                            )
-                          ],
+                  trailing: itemsList[index]["status"] == "false"
+                      ? IconButton(
+                          icon: Icon(Icons.star_border_outlined),
+                          onPressed: () {
+                            favoriteBloc.incrementCount();
+
+                            ItemModel itemsModel = new ItemModel(
+                              title: itemsList[index]['title'],
+                              url: itemsList[index]['url'],
+                              image: itemsList[index]['image'],
+                            );
+
+                            favoriteBloc.addItems(
+                                itemsModel); // add item count in bookmark provider
+                            //print(bookmarkBloc.wishlist[index].title);
+                            setState(() {
+                              itemsList[index]["status"] = "true";
+                            });
+                          },
+                        )
+                      : IconButton(
+                          icon: Icon(
+                            Icons.star,
+                            color: Colors.deepOrange,
+                          ),
+                          onPressed: () {
+                            favoriteBloc.decrementCount();
+
+                            ItemModel itemsModel = new ItemModel(
+                              title: itemsList[index]['title'],
+                              url: itemsList[index]['url'],
+                              image: itemsList[index]['image'],
+                            );
+
+                            favoriteBloc.removeItems(
+                                itemsModel); // add item count in bookmark provider
+                            //print(bookmarkBloc.wishlist[index].title);
+                            setState(() {
+                              itemsList[index]["status"] = "false";
+                            });
+                          },
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.all(20),
-              color: Colors.black,
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: InkWell(
-                  onTap: () async {
-                    final Uri url = Uri.parse('https://deviantart.com');
-                    if (!await launchUrl(url)) {
-                      throw Exception('Could not launch $url');
-                    }
-                  },
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.white,
-                              child: Padding(
-                                padding: EdgeInsets.all(2),
-                                child: ClipOval(
-                                  child: Image.network(
-                                      // "assets/images/deviantart.jpg",
-                                      "https://play-lh.googleusercontent.com/IUcqE41VIxbZexis7tPuWMuGD_4mQCPx4cuO5z1ZrgzeMqRu1-uU720TtznqPWS69Jk"),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "DevianArt",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "deviantart.com/",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 60,
-                            ),
-                            Icon(
-                              Icons.bookmark_add,
-                              size: 30,
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.all(20),
-              color: Colors.black,
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: InkWell(
-                  onTap: () async {
-                    final Uri url = Uri.parse('https://pexels.com');
-                    if (!await launchUrl(url)) {
-                      throw Exception('Could not launch $url');
-                    }
-                  },
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colors.white,
-                              child: Padding(
-                                padding: EdgeInsets.all(2),
-                                child: ClipOval(
-                                  child: Image.network(
-                                      // "assets/images/pexels.jpeg",
-                                      "https://cdn-au.onetrust.com/logos/3dbea99f-abc0-4dbd-bcd7-8f6dfcaea28d/08d31c24-1bed-4774-903b-b1725205a842/bb79b0fe-48e3-427c-bbac-47fc621af04c/3IX0JssK_400x400.jpeg"),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Pexels",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "pexels.com/",
-                                  style: GoogleFonts.getFont(
-                                    'Montserrat',
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                            ),
-                            Icon(
-                              Icons.bookmark_add,
-                              size: 30,
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),

@@ -75,11 +75,13 @@ class _MyStopwatchState extends State<MyStopwatch> {
                 child: Icon(Icons.play_arrow, color: Colors.white, size: 40),
                 backgroundColor: Colors.green,
                 onPressed: startwatch,
+                heroTag: null,
               ),
               new FloatingActionButton(
                 child: Icon(Icons.stop, color: Colors.white, size: 40),
                 backgroundColor: Colors.yellow,
                 onPressed: stopwatch,
+                heroTag: null,
               ),
               new FloatingActionButton(
                 child: Icon(
@@ -89,6 +91,7 @@ class _MyStopwatchState extends State<MyStopwatch> {
                 ),
                 backgroundColor: Colors.red,
                 onPressed: resetwatch,
+                heroTag: null,
               )
             ],
           )
