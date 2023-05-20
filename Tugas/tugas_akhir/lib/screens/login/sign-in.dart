@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tugas_akhir/models/user_model.dart';
-import 'package:tugas_akhir/screens/home_screen.dart';
-import 'package:tugas_akhir/screens/validation.dart';
-import 'package:tugas_akhir/constants.dart';
-import 'package:tugas_akhir/widgets/custom_button.dart';
-import 'package:tugas_akhir/widgets/custom_textfield.dart';
-import 'package:tugas_akhir/widgets/custom_snackbar.dart';
+import 'package:tugas_akhir/screens/BottomNavigation/home_screen.dart';
+import 'package:tugas_akhir/utilities/validation.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
+import 'package:tugas_akhir/widgets/app/custom_button.dart';
+import 'package:tugas_akhir/widgets/app/custom_textfield.dart';
+import 'package:tugas_akhir/widgets/app/custom_snackbar.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
               Icon(
                 Icons.login,
                 size: 60,
-                color: kDarkBlue.withOpacity(0.8),
+                color: kDarkBlue.withOpacity(1),
               ),
               const Spacer(),
               CustomTextField(

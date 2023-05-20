@@ -20,13 +20,13 @@ const kDarkGrey = Color(0xFF2d2d2e);
 const kGreyColor = Color(0xFFa8aaad);
 
 const kTextStyle = TextStyle(
-  color: kWhite,
+  color: kBlack,
   fontWeight: FontWeight.bold,
   fontSize: 26,
 );
 
 const kTitleStyle = TextStyle(
-  color: kWhite,
+  color: kBlack,
   fontWeight: FontWeight.normal,
   fontSize: 25,
 );
@@ -36,3 +36,9 @@ const kSubTitleStyle = TextStyle(
   fontWeight: FontWeight.normal,
   fontSize: 18,
 );
+
+class ThemeColor {
+  static Color darkBackground = const Color.fromARGB(255, 56, 56, 56);
+  static Color darkGrey = const Color.fromARGB(255, 68, 68, 68);
+  static Color white = const Color.fromARGB(255, 255, 255, 255);
+}

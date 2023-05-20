@@ -1,10 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_akhir/models/user_model.dart';
-import 'package:tugas_akhir/constants.dart';
-import 'package:tugas_akhir/widgets/custom_modal.dart';
-import 'package:tugas_akhir/widgets/custome_alert_dialog.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
+import 'package:tugas_akhir/widgets/app/custom_modal.dart';
+import 'package:tugas_akhir/widgets/app/custom_alert_dialog.dart';
 
 class CustomCard extends StatelessWidget {
   User user;
@@ -17,13 +18,13 @@ class CustomCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Card(
       margin: EdgeInsets.symmetric(vertical: size.height * 0.01),
-      shadowColor: kWhite.withOpacity(0.7),
+
       elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
       //color: Colors.white10.withOpacity(0.2),
-      color: Colors.transparent,
+      color: Colors.white,
       child: ClipPath(
         clipper: ShapeBorderClipper(
           shape:
@@ -41,8 +42,8 @@ class CustomCard extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                KCardDarkBlue.withOpacity(0.9),
-                KCardLightBlue.withOpacity(0.9),
+                Colors.black.withOpacity(0.9),
+                Colors.black.withOpacity(0.9),
               ],
             ),
           ),
@@ -62,20 +63,44 @@ class CustomCard extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.delete,
-                    color: kGreyColor,
+                    color: Colors.white,
                   )),
-              title: Text(user.fullName, style: kTitleStyle),
+              title: Text(
+                user.fullName,
+                style: GoogleFonts.getFont(
+                  'Montserrat',
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     user.email,
-                    style: kSubTitleStyle,
+                    style: GoogleFonts.getFont(
+                      'Montserrat',
+                      textStyle: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                  Text(
-                    user.age.toString(),
-                    style: kSubTitleStyle,
-                  ),
+                  // Text(
+                  //   user.age.toString(),
+                  //   style: GoogleFonts.getFont(
+                  //     'Montserrat',
+                  //     textStyle: TextStyle(
+                  //       fontSize: 12,
+                  //       fontWeight: FontWeight.w400,
+                  //       color: Colors.white,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               leading: Stack(

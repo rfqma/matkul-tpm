@@ -1,14 +1,15 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_akhir/models/user_model.dart';
-import 'package:tugas_akhir/screens/login_screen.dart';
-import 'package:tugas_akhir/screens/validation.dart';
-import 'package:tugas_akhir/constants.dart';
-import 'package:tugas_akhir/widgets/custom_button.dart';
-import 'package:tugas_akhir/widgets/custom_container.dart';
-import 'package:tugas_akhir/widgets/custom_textfield.dart';
-import 'package:tugas_akhir/widgets/custom_snackbar.dart';
+import 'package:tugas_akhir/screens/Login/login_screen.dart';
+import 'package:tugas_akhir/utilities/validation.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
+import 'package:tugas_akhir/widgets/app/custom_button.dart';
+import 'package:tugas_akhir/widgets/app/custom_container.dart';
+import 'package:tugas_akhir/widgets/app/custom_textfield.dart';
+import 'package:tugas_akhir/widgets/app/custom_snackbar.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class SignUp extends StatefulWidget {
@@ -65,7 +66,7 @@ class _SignUpState extends State<SignUp> {
               saveValue: _fullName,
               validate: validatefullName,
               prefixIcon: Icons.person,
-              hintText: 'FullName',
+              hintText: 'Full Name',
             ),
             SizedBox(
               height: size.height * 0.025,
@@ -98,13 +99,13 @@ class _SignUpState extends State<SignUp> {
                 const Text(
                   'Gender',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 21,
                     color: Colors.black54,
                   ),
                 ),
                 CustomContainer(
                   height: size.height * 0.07,
-                  width: size.width * 0.45,
+                  width: size.width * 0.4,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: DropdownButton(
@@ -121,11 +122,20 @@ class _SignUpState extends State<SignUp> {
 
                       icon: const Padding(
                           padding: EdgeInsets.only(left: 20),
-                          child: Icon(Icons.arrow_circle_down_sharp)),
+                          child: Icon(
+                            Icons.arrow_circle_down_sharp,
+                            color: Colors.black,
+                          )),
                       iconEnabledColor: kWhite, //Icon color
-                      style: kTextStyle.copyWith(fontSize: 20),
-                      dropdownColor:
-                          Colors.grey.shade400, //dropdown background color
+                      style: GoogleFonts.getFont(
+                        'Montserrat',
+                        textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black,
+                        ),
+                      ),
+                      dropdownColor: Colors.white, //dropdown background color
                       underline: Container(), //remove underline
                       isExpanded: true, //make true to make width 100%
                     ),

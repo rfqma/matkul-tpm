@@ -32,18 +32,10 @@ class CustomContainer extends StatelessWidget {
               colors: [
                 // Colors.white.withOpacity(0.20),
                 // Colors.white.withOpacity(0.1),
-                Colors.white.withOpacity(0.4),
+                Colors.white.withOpacity(0.9),
                 Colors.white.withOpacity(0.3),
               ],
             ),
-            boxShadow: const <BoxShadow>[
-              BoxShadow(
-                color: Colors.transparent,
-                //color: kDarkBlue.withOpacity(0.6),
-                blurRadius: 3.0,
-                offset: Offset(6.0, 6.0),
-              ),
-            ],
           ),
         ),
       ),

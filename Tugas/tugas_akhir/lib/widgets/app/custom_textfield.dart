@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/constants.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {
@@ -68,11 +68,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
               )
             : null,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.white),
+          borderSide: const BorderSide(width: 2, color: Colors.grey),
           borderRadius: BorderRadius.circular(30),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.white),
+          borderSide: const BorderSide(width: 2, color: Colors.black),
           borderRadius: BorderRadius.circular(30),
         ),
       ),

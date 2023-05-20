@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/screens/login/sign-in.dart';
-import 'package:tugas_akhir/screens/login/sign-up.dart';
-import 'package:tugas_akhir/constants.dart';
-import 'package:tugas_akhir/widgets/base_screen.dart';
-import 'package:tugas_akhir/widgets/custom_container.dart';
+import 'package:tugas_akhir/screens/Login/sign-in.dart';
+import 'package:tugas_akhir/screens/Login/sign-up.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
+import 'package:tugas_akhir/widgets/app/base_screen.dart';
+import 'package:tugas_akhir/widgets/app/custom_container.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen>
               controller: _tabController,
               physics: const ClampingScrollPhysics(),
               indicator: BoxDecoration(
-                color: kWhite.withOpacity(0.5),
+                color: kWhite.withOpacity(1),
                 borderRadius: BorderRadius.circular(30),
               ),
               indicatorSize: TabBarIndicatorSize.tab,

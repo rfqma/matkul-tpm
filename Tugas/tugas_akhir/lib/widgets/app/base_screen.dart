@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:tugas_akhir/constants.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
 
 class BaseScreen extends StatelessWidget {
   final Widget bodyContainer;

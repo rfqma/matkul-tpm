@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/constants.dart';
+import 'package:tugas_akhir/utilities/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonName;
@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
           horizontal: padding,
         ),
         decoration: BoxDecoration(
-          color: kWhite.withOpacity(0.5),
+          color: kBlack,
           // border: Border.all(
           //   color: Colors.white,
           //   width: 2,
@@ -34,7 +34,7 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           buttonName,
-          style: kSubTitleStyle.copyWith(color: kDarkGrey),
+          style: kSubTitleStyle.copyWith(color: kWhite),
         ),
       ),
     );

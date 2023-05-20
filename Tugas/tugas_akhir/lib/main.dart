@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sizer/sizer.dart';
 
-import 'package:tugas_akhir/screens/login_screen.dart';
+import 'package:tugas_akhir/screens/Login/login_screen.dart';
 import 'package:tugas_akhir/models/user_model.dart';
 
 void main() async {
@@ -25,13 +26,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoginScreen(),
-      debugShowCheckedModeBanner: false,
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: LoginScreen(),
+        debugShowCheckedModeBanner: false,
+      );
+    });
   }
 }
