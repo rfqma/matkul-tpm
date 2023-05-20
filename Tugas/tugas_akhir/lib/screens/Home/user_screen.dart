@@ -24,7 +24,7 @@ class UserScreen extends StatelessWidget {
       backgroundColor: ThemeColor.darkBackground,
       appBar: AppBar(
         title: Text(
-          "User List",
+          "User Lists",
           style: GoogleFonts.getFont(
             'Montserrat',
             textStyle: TextStyle(

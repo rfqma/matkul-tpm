@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: ThemeColor.darkBackground,
       appBar: AppBar(
         title: Text(
-          "Welcome, ${user.fullName}",
+          "👋🏼 Hi, ${user.fullName}",
           style: GoogleFonts.getFont(
             'Montserrat',
             textStyle: TextStyle(
