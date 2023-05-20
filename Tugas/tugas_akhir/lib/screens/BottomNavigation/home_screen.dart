@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:tugas_akhir/models/user_model.dart';
+import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/screens/Home/CatLists/cat_screen.dart';
 import 'package:tugas_akhir/screens/Home/currency_screen.dart';
 import 'package:tugas_akhir/screens/Home/time_screen.dart';
@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: ThemeColor.darkBackground,
       appBar: AppBar(
         title: Text(
           "Welcome, ${user.fullName}",

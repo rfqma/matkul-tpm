@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/models/cat_model.dart';
-import 'package:tugas_akhir/models/cat_gallery.dart';
-import 'package:tugas_akhir/models/cat_image.dart';
+import 'package:tugas_akhir/models/catModels/cat_model.dart';
+import 'package:tugas_akhir/models/catModels/cat_gallery.dart';
+import 'package:tugas_akhir/models/catModels/cat_image.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {

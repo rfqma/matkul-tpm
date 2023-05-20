@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:tugas_akhir/models/user_model.dart';
+import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/utilities/validation.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
 import 'package:tugas_akhir/widgets/app/custom_button.dart';

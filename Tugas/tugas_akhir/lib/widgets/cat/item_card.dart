@@ -2,7 +2,7 @@ import 'package:tugas_akhir/data/api.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
 import 'package:tugas_akhir/screens/Home/CatLists/detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/models/cat_model.dart';
+import 'package:tugas_akhir/models/catModels/cat_model.dart';
 import 'package:sizer/sizer.dart';
 
 class ItemCard extends StatefulWidget {

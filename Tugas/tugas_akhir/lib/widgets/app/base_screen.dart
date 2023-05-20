@@ -27,10 +27,7 @@ class BaseScreen extends StatelessWidget {
   Widget generateBluredImage() {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(backgroundImage),
-          fit: BoxFit.cover,
-        ),
+        color: Color.fromARGB(255, 56, 56, 56),
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 0.1, sigmaY: 0.1),

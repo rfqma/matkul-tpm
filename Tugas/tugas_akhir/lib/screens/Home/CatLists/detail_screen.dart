@@ -2,7 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
 import 'package:tugas_akhir/widgets/cat/appbar_photo_and_title.dart';
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/models/cat_model.dart';
+import 'package:tugas_akhir/models/catModels/cat_model.dart';
 import 'package:tugas_akhir/widgets/cat/categories.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -115,6 +115,9 @@ class DetailsScreen extends StatelessWidget {
                                     ),
                                   )
                                 : const SizedBox(),
+                            const SizedBox(
+                              height: 50,
+                            ),
                           ],
                         ),
                       ),

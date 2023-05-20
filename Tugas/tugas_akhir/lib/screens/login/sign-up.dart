@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tugas_akhir/models/user_model.dart';
+import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/screens/Login/login_screen.dart';
 import 'package:tugas_akhir/utilities/validation.dart';
 import 'package:tugas_akhir/utilities/constants.dart';

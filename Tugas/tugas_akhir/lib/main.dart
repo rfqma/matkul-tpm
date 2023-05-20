@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:tugas_akhir/screens/Login/login_screen.dart';
-import 'package:tugas_akhir/models/user_model.dart';
+import 'package:tugas_akhir/models/userModels/user_model.dart';
 
 void main() async {
   await Hive.initFlutter();
