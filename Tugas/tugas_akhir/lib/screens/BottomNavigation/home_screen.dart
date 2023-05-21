@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:tugas_akhir/models/userModels/user_model.dart';
-import 'package:tugas_akhir/screens/Home/CatLists/cat_screen.dart';
-import 'package:tugas_akhir/screens/Home/currency_screen.dart';
-import 'package:tugas_akhir/screens/Home/time_screen.dart';
-import 'package:tugas_akhir/screens/Home/user_screen.dart';
-import 'package:tugas_akhir/screens/Login/login_screen.dart';
+import 'package:tugas_akhir/screens/Home/CatScreen/cat_screen.dart';
+import 'package:tugas_akhir/screens/Home/CurrencyConverterScreen/currency_screen.dart';
+import 'package:tugas_akhir/screens/Home/TimeConverterScreen/timezone_location_screen.dart';
+import 'package:tugas_akhir/screens/Home/TimeConverterScreen/timezone_screen.dart';
+import 'package:tugas_akhir/screens/Home/UserScreen/user_screen.dart';
+import 'package:tugas_akhir/screens/LoginScreen/login_screen.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/base_screen.dart';
-import 'package:tugas_akhir/widgets/app/custom_card.dart';
-import 'package:tugas_akhir/widgets/app/custom_circular_progress.dart';
-import 'package:tugas_akhir/widgets/app/custom_container.dart';
+import 'package:tugas_akhir/widgets/appWidgets/base_screen.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_card.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_circular_progress.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_container.dart';
 
 class HomeScreen extends StatelessWidget {
   User user;
@@ -31,7 +32,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: ThemeColor.darkBackground,
       appBar: AppBar(
         title: Text(
-          "👋🏼 Hi, ${user.fullName}",
+          "Welcome ${user.fullName}",
           style: GoogleFonts.getFont(
             'Montserrat',
             textStyle: TextStyle(
@@ -113,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return TimeScreen();
+                      return TimezoneScreen();
                     }));
                   },
                   style: ElevatedButton.styleFrom(

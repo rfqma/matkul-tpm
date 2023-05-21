@@ -1,6 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/currency/currency_card.dart';
+import 'package:tugas_akhir/widgets/currencyWidgets/currency_card.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyScreen extends StatelessWidget {

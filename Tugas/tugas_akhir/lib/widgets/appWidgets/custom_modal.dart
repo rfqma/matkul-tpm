@@ -7,9 +7,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/utilities/validation.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/custom_button.dart';
-import 'package:tugas_akhir/widgets/app/custom_textfield.dart';
-import 'package:tugas_akhir/widgets/app/custom_snackbar.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_button.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_textfield.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_snackbar.dart';
 
 class CustomModal extends StatefulWidget {
   User user;

@@ -1,4 +1,4 @@
-import 'package:tugas_akhir/data/api.dart';
+import 'package:tugas_akhir/data/api_cat.dart';
 import 'package:tugas_akhir/models/catModels/cat_gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:tugas_akhir/models/catModels/cat_model.dart';

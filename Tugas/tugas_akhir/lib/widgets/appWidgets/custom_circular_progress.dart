@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/widgets/app/custom_container.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_container.dart';
 
 class CustomCircularProgress extends StatelessWidget {
   const CustomCircularProgress({Key? key}) : super(key: key);

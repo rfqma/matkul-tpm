@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tugas_akhir/screens/Home/CatLists/gallery_screen.dart';
+import 'package:tugas_akhir/screens/Home/CatScreen/gallery_screen.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tugas_akhir/data/api.dart';
+import 'package:tugas_akhir/data/api_cat.dart';
 import 'package:tugas_akhir/models/catModels/cat_model.dart';
 
 import 'package:tugas_akhir/utilities/constants.dart';

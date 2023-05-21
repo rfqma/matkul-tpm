@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/screens/Login/sign-in.dart';
-import 'package:tugas_akhir/screens/Login/sign-up.dart';
+import 'package:tugas_akhir/screens/LoginScreen/sign-in.dart';
+import 'package:tugas_akhir/screens/LoginScreen/sign-up.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/base_screen.dart';
-import 'package:tugas_akhir/widgets/app/custom_container.dart';
+import 'package:tugas_akhir/widgets/appWidgets/base_screen.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_container.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

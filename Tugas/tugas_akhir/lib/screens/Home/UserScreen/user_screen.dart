@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:tugas_akhir/models/userModels/user_model.dart';
-import 'package:tugas_akhir/screens/Login/login_screen.dart';
+import 'package:tugas_akhir/screens/LoginScreen/login_screen.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/base_screen.dart';
-import 'package:tugas_akhir/widgets/app/custom_card.dart';
-import 'package:tugas_akhir/widgets/app/custom_circular_progress.dart';
-import 'package:tugas_akhir/widgets/app/custom_container.dart';
+import 'package:tugas_akhir/widgets/appWidgets/base_screen.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_card.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_circular_progress.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_container.dart';
 
 class UserScreen extends StatelessWidget {
   User user;

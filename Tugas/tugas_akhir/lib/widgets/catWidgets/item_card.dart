@@ -1,6 +1,6 @@
-import 'package:tugas_akhir/data/api.dart';
+import 'package:tugas_akhir/data/api_cat.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/screens/Home/CatLists/detail_screen.dart';
+import 'package:tugas_akhir/screens/Home/CatScreen/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:tugas_akhir/models/catModels/cat_model.dart';
 import 'package:sizer/sizer.dart';

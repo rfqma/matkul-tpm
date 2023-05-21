@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/custom_button.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_button.dart';
 
 class CustomeAlertDialog extends StatelessWidget {
   int index;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/widgets/cat/horizontally_scroll_items.dart';
+import 'package:tugas_akhir/widgets/catWidgets/horizontally_scroll_items.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:tugas_akhir/models/catModels/cat_model.dart';

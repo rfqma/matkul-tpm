@@ -17,7 +17,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'Feedback Mata Kuliah TPM',
+          'Feedback Mata Kuliah TPM IF-C',
           style: GoogleFonts.getFont(
             'Montserrat',
             textStyle: TextStyle(
@@ -25,6 +25,41 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              "Kesan dan Pesan",
+              style: GoogleFonts.getFont(
+                'Montserrat',
+                textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Asik",
+              style: GoogleFonts.getFont(
+                'Montserrat',
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

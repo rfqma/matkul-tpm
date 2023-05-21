@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/custom_modal.dart';
-import 'package:tugas_akhir/widgets/app/custom_alert_dialog.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_modal.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_alert_dialog.dart';
 
 class CustomCard extends StatelessWidget {
   User user;

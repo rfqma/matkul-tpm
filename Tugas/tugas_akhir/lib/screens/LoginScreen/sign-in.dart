@@ -6,9 +6,10 @@ import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/screens/BottomNavigation/home_screen.dart';
 import 'package:tugas_akhir/utilities/validation.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/custom_button.dart';
-import 'package:tugas_akhir/widgets/app/custom_textfield.dart';
-import 'package:tugas_akhir/widgets/app/custom_snackbar.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_bottom_navigation.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_button.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_textfield.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_snackbar.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -143,9 +144,10 @@ class _SignInState extends State<SignIn> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return HomeScreen(
-                user: loginUser,
-              );
+              return BottomMap(user: loginUser);
+              // return HomeScreen(
+              //   user: loginUser,
+              // );
             },
           ),
         );

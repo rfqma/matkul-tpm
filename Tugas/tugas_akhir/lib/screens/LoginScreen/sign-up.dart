@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_akhir/models/userModels/user_model.dart';
-import 'package:tugas_akhir/screens/Login/login_screen.dart';
+import 'package:tugas_akhir/screens/LoginScreen/login_screen.dart';
 import 'package:tugas_akhir/utilities/validation.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
-import 'package:tugas_akhir/widgets/app/custom_button.dart';
-import 'package:tugas_akhir/widgets/app/custom_container.dart';
-import 'package:tugas_akhir/widgets/app/custom_textfield.dart';
-import 'package:tugas_akhir/widgets/app/custom_snackbar.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_button.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_container.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_textfield.dart';
+import 'package:tugas_akhir/widgets/appWidgets/custom_snackbar.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class SignUp extends StatefulWidget {
