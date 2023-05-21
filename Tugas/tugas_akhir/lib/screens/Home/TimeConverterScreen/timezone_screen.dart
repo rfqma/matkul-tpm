@@ -1,57 +1,72 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:tugas_akhir/screens/Home/TimeConverterScreen/timezone_location_screen.dart';
+import 'package:intl/intl.dart';
 import 'package:tugas_akhir/utilities/constants.dart';
 
 class TimezoneScreen extends StatefulWidget {
-  const TimezoneScreen({super.key});
-
   @override
-  State<TimezoneScreen> createState() => _TimezoneScreenState();
+  _TimezoneScreenState createState() => _TimezoneScreenState();
 }
 
 class _TimezoneScreenState extends State<TimezoneScreen> {
-  Map data = {};
+  DateTime _selectedDate = DateTime.now();
+  String _zone = 'WIB';
+  Timer? _timer;
+  String? _timeString;
 
   @override
+  void initState() {
+    super.initState();
+    _timer =
+        Timer.periodic(Duration(milliseconds: 100), (Timer t) => _getTime());
+  }
+
+  void _getTime() {
+    final DateTime now =
+        DateTime.now().toUtc().add(Duration(hours: _getHourOffset()));
+    if (this.mounted) {
+      setState(() {
+        _timeString = DateFormat('HH:mm:ss').format(now);
+      });
+    }
+  }
+
+  int _getHourOffset() {
+    if (_zone == "WIB") {
+      return 7;
+    } else if (_zone == "WITA") {
+      return 8;
+    } else if (_zone == "WIT") {
+      return 9;
+    } else if (_zone == "GMT+1") {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  void _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null && picked != _selectedDate)
+      setState(() {
+        _selectedDate = picked;
+      });
+  }
+
   Widget build(BuildContext context) {
-    data = data.isNotEmpty
-        ? data
-        : ModalRoute.of(context)?.settings.arguments as Map;
-
-    // if (data != null && data.isNotEmpty) {
-    //   data = data;
-    // } else {
-    //   ModalRoute.of(context)?.settings.arguments as Map;
-    // }
-
-    //set background
-    // String bgImage = data['isDayTime'] ? 'day.png' : 'night.png';
-    String? bgImage;
-    if (data != null && data['isDayTime'] != null) {
-      bgImage = data['isDayTime'] ? 'day.png' : 'night.png';
-    } else {
-      // Handle the null case or provide a default value
-      bgImage = 'background2.jpg';
-    }
-
-    // Color bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo;
-    Color? bgColor;
-    if (data != null && data['isDayTime'] != null) {
-      bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo;
-    } else {
-      // Handle the null case or provide a default value
-      bgColor = ThemeColor.darkBackground;
-    }
-
-    var location = data != null ? data['location'] : 'Unknown location';
-    var time = data != null ? data['time'] : 'Unknown Time';
+    String __timeString = _timeString ?? "Null";
 
     return Scaffold(
+      backgroundColor: ThemeColor.darkBackground,
       appBar: AppBar(
         title: Text(
-          "Timezone Converter",
+          "Clock",
           style: GoogleFonts.getFont(
             'Montserrat',
             textStyle: TextStyle(
@@ -62,82 +77,92 @@ class _TimezoneScreenState extends State<TimezoneScreen> {
         ),
         backgroundColor: Colors.black,
       ),
-      backgroundColor: bgColor,
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('assets/images/$bgImage'),
-            fit: BoxFit.cover,
-          )),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
-            child: Column(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              DateFormat.yMMMMEEEEd().format(_selectedDate),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => _selectDate(context),
+              child: Text(
+                'Calendar',
+                style: TextStyle(color: Colors.black),
+              ),
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  primary: Colors.white),
+            ),
+            SizedBox(height: 60),
+            Text(
+              __timeString,
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                TextButton.icon(
-                  onPressed: () async {
-                    dynamic result =
-                        // await Navigator.pushNamed(context, '/location');
-                        await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    TimezoneLocationScreen()));
+                ElevatedButton(
+                  child: Text('WIB'),
+                  onPressed: () {
                     setState(() {
-                      if (result != null) {
-                        var timeR = result['time'];
-                        var locationR = result['location'];
-                        var isDayTimeR = result['isDayTime'];
-                        var flagR = result['flag'];
-                        data = {
-                          'time': timeR,
-                          'location': locationR,
-                          'isDayTime': isDayTimeR,
-                          'flag': flagR,
-                        };
-                      }
-                      // data = {
-                      //   'time': result['time'],
-                      //   'location': result['location'],
-                      //   'isDayTime': result['isDayTime'],
-                      //   'flag': result['flag'],
-                      // };
+                      _zone = 'WIB';
                     });
                   },
-                  icon: Icon(
-                    Icons.edit_location,
-                    color: Colors.grey[300],
-                  ),
-                  label: Text(
-                    'Edit Location',
-                    style: TextStyle(color: Colors.grey[300]),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black, // warna latar belakang button
+                    onPrimary: Colors.white, // warna teks pada button
                   ),
                 ),
-                const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      location,
-                      style: const TextStyle(
-                        fontSize: 28.0,
-                        letterSpacing: 2.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                Text(
-                  time,
-                  style: const TextStyle(
-                    fontSize: 66.0,
-                    color: Colors.white,
+                SizedBox(width: 16),
+                ElevatedButton(
+                  child: Text('WITA'),
+                  onPressed: () {
+                    setState(() {
+                      _zone = 'WITA';
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black, // warna latar belakang button
+                    onPrimary: Colors.white, // warna teks pada button
                   ),
-                )
+                ),
+                SizedBox(width: 16),
+                ElevatedButton(
+                  child: Text('WIT'),
+                  onPressed: () {
+                    setState(() {
+                      _zone = 'WIT';
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black, // warna latar belakang button
+                    onPrimary: Colors.white, // warna teks pada button
+                  ),
+                ),
+                SizedBox(width: 16),
+                ElevatedButton(
+                  child: Text('GMT+1'),
+                  onPressed: () {
+                    setState(() {
+                      _zone = 'GMT+1';
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black, // warna latar belakang button
+                    onPrimary: Colors.white, // warna teks pada button
+                  ),
+                ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );

@@ -6,7 +6,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:tugas_akhir/models/userModels/user_model.dart';
 import 'package:tugas_akhir/screens/Home/CatScreen/cat_screen.dart';
 import 'package:tugas_akhir/screens/Home/CurrencyConverterScreen/currency_screen.dart';
-import 'package:tugas_akhir/screens/Home/TimeConverterScreen/timezone_location_screen.dart';
 import 'package:tugas_akhir/screens/Home/TimeConverterScreen/timezone_screen.dart';
 import 'package:tugas_akhir/screens/Home/UserScreen/user_screen.dart';
 import 'package:tugas_akhir/screens/LoginScreen/login_screen.dart';
@@ -73,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Icon(Icons.pets),
                       Text(
-                        "Cat Lists",
+                        "Cats Database",
                         style: GoogleFonts.getFont(
                           'Montserrat',
                           textStyle: TextStyle(
@@ -123,9 +122,9 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.timer),
+                      Icon(Icons.access_time_filled),
                       Text(
-                        "Time Converter",
+                        "Clock",
                         style: GoogleFonts.getFont(
                           'Montserrat',
                           textStyle: TextStyle(
