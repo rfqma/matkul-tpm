@@ -227,6 +227,7 @@ class _CardsState extends State<Cards> {
   Widget _buildDropdownButton(String currencyCategory) {
     return DropdownButton(
       value: currencyCategory,
+      dropdownColor: Colors.black,
       items: currencies!
           .map(
             (String value) => DropdownMenuItem(
